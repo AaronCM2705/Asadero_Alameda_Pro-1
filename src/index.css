@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #0A0A0A;
+  --color-primary: #ffb779;
+  --color-primary-container: #cd7f32;
+  --color-on-primary: #4c2700;
+  --color-on-primary-container: #432200;
+  --color-surface: #0A0A0A;
+  --color-on-surface: #e2e2e2;
+  --color-surface-container-low: #1b1b1b;
+  --color-surface-container: #151515;
+  --color-surface-container-highest: #353535;
+  --color-surface-container-lowest: #050505;
+  --color-surface-bright: #222222;
+  --color-on-surface-variant: #d8c2b2;
+  --color-secondary: #cdc6b8;
+  --color-secondary-container: #4d493e;
+  --color-error: #ffb4ab;
+
+  --font-body: "Be Vietnam Pro", sans-serif;
+  --font-headline: "Playfair Display", serif;
+  --font-label: "Be Vietnam Pro", sans-serif;
+
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-on-surface antialiased overflow-x-hidden;
+  }
+}
+
+@layer utilities {
+  .dotted-leader {
+    background-image: radial-gradient(circle, #cd7f32 1px, transparent 1.5px);
+    background-size: 10px 4px;
+    background-position: bottom;
+    background-repeat: repeat-x;
+  }
+  
+  .min-1 {
+    /* Used for JS logic flag */
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-background;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-surface-container-highest rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary-container;
+  }
+
+  .animate-fade-in {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
