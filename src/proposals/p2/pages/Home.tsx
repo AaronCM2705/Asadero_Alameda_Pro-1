@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Flame, Star, Clock, MapPin } from 'lucide-react';
+import { ArrowRight, Star, Clock } from 'lucide-react';
 
 export const Home: React.FC = () => {
   return (

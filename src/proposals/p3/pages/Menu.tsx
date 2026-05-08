@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Plus, Minus, ShoppingCart, Info, ArrowRight } from 'lucide-react';
+import { Plus, Minus, ShoppingCart, Info } from 'lucide-react';
 import { mockMenu } from '../../../data/mockDb';
 import type { CartItem, MenuItem, MenuOption } from '../../../shared/types';
 

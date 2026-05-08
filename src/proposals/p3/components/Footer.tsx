@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Terminal, MapPin, Phone, Mail, LayoutDashboard, ArrowUpRight } from 'lucide-react';
+import { MapPin, Phone, Mail, LayoutDashboard, ArrowUpRight } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   return (

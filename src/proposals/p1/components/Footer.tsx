@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Sparkles, MapPin, Phone, Mail, LayoutDashboard, Instagram, Facebook } from 'lucide-react';
+import { MapPin, Phone, Mail, LayoutDashboard } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   return (
@@ -17,10 +17,6 @@ export const Footer: React.FC = () => {
             <p className="font-body text-sm text-on-surface-variant/60 leading-relaxed max-w-xs">
               Honrando la tradición del asado a la leña desde hace tres décadas. Una experiencia de lujo para el paladar.
             </p>
-            <div className="flex gap-6">
-              <Instagram size={20} className="text-primary hover:scale-125 transition-transform cursor-pointer" />
-              <Facebook size={20} className="text-primary hover:scale-125 transition-transform cursor-pointer" />
-            </div>
           </div>
 
           {/* Navigation */}

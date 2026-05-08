@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Bell, TrendingUp, DollarSign, Package, CheckCircle, Clock, BarChart3, Settings, History, LayoutDashboard, ShoppingCart, Download } from 'lucide-react';
+import { Bell, TrendingUp, DollarSign, CheckCircle, Settings, History, LayoutDashboard, ShoppingCart, Download } from 'lucide-react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import type { Order, OrderStatus } from '../../../shared/types';
 

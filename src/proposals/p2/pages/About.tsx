@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heart, Users, Utensils, Star } from 'lucide-react';
+import { Heart, Utensils } from 'lucide-react';
 
 export const About: React.FC = () => {
   return (

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Facebook, Instagram, Twitter, MapPin, Phone, Mail, LayoutDashboard } from 'lucide-react';
+import { MapPin, Phone, Mail, LayoutDashboard } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   return (
@@ -13,13 +13,6 @@ export const Footer: React.FC = () => {
             <p className="text-on-surface-variant text-sm leading-relaxed mb-8 font-medium">
               Llevando el sabor del asado tradicional a un nivel gourmet superior. Calidad, frescura y pasión en cada pedido.
             </p>
-            <div className="flex gap-4">
-              {[Facebook, Instagram, Twitter].map((Icon, i) => (
-                <a key={i} href="#" className="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center text-on-surface-variant hover:bg-primary hover:text-white transition-all">
-                  <Icon size={18} />
-                </a>
-              ))}
-            </div>
           </div>
 
           {/* Links */}
