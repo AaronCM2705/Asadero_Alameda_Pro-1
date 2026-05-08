@@ -1,6 +1,6 @@
 import React from 'react';
 import { X, ArrowLeft } from 'lucide-react';
-import type { CartItem } from '../types';
+import type { CartItem } from '../../../shared/types';
 
 interface CartSidebarProps {
   isOpen: boolean;

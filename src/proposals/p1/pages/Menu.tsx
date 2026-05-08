@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ShoppingBasket, Minus, Plus, Utensils, Wine } from 'lucide-react';
-import { mockMenu } from '../data/mockDb';
-import type { CartItem, MenuOption } from '../types';
+import { mockMenu } from '../../../data/mockDb';
+import type { CartItem, MenuOption } from '../../../shared/types';
 
 interface MenuProps {
   onAddToCart: (item: Omit<CartItem, 'cartItemId'>) => void;

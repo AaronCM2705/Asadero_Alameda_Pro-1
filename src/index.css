@@ -1,26 +1,112 @@
 @import "tailwindcss";
 
-@theme {
+:root {
+  /* Default P1 (Gold) - Reverting to Premium Dark Theme */
   --color-background: #0A0A0A;
-  --color-primary: #ffb779;
-  --color-primary-container: #cd7f32;
-  --color-on-primary: #4c2700;
-  --color-on-primary-container: #432200;
-  --color-surface: #0A0A0A;
-  --color-on-surface: #e2e2e2;
-  --color-surface-container-low: #1b1b1b;
-  --color-surface-container: #151515;
-  --color-surface-container-highest: #353535;
+  --color-primary: #D4AF37; /* Bright Metallic Gold */
+  --color-primary-container: #AA8C2C;
+  --color-on-primary: #000000;
+  --color-on-primary-container: #ffffff;
+  --color-surface: #121212;
+  --color-on-surface: #E5E5E5; /* High contrast white-gray */
+  --color-surface-container-low: #1A1A1A;
+  --color-surface-container: #222222;
+  --color-surface-container-highest: #333333;
   --color-surface-container-lowest: #050505;
-  --color-surface-bright: #222222;
-  --color-on-surface-variant: #d8c2b2;
-  --color-secondary: #cdc6b8;
-  --color-secondary-container: #4d493e;
-  --color-error: #ffb4ab;
+  --color-surface-bright: #1E1E1E;
+  --color-on-surface-variant: #B0B0B0; /* Readable gray for descriptions */
+  --color-secondary: #8E8E8E;
+  --color-secondary-container: #333333;
+  --color-error: #FF4D4D;
+  --color-outline: #D4AF37;
+  --color-outline-variant: #444444;
 
   --font-body: "Be Vietnam Pro", sans-serif;
   --font-headline: "Playfair Display", serif;
   --font-label: "Be Vietnam Pro", sans-serif;
+}
+
+.theme-p1 {
+  --color-background: #0A0A0A;
+  --color-on-surface: #E5E5E5;
+  --color-on-surface-variant: #B0B0B0;
+}
+
+.theme-p2 {
+  --color-background: #fbf9f8;
+  --color-primary: #a63b00;
+  --color-primary-container: #f16522;
+  --color-on-primary: #ffffff;
+  --color-on-primary-container: #4e1800;
+  --color-surface: #fbf9f8;
+  --color-on-surface: #121212; /* Deep Black */
+  --color-surface-container-low: #f5f3f3;
+  --color-surface-container: #efeded;
+  --color-surface-container-high: #e9e8e7;
+  --color-surface-container-highest: #e4e2e2;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-bright: #fbf9f8;
+  --color-on-surface-variant: #2d1b15; /* Dark Brown */
+  --color-secondary: #3d3d3d;
+  --color-secondary-container: #e2dfde;
+  --color-error: #ba1a1a;
+  --color-outline: #8d7166;
+  --color-outline-variant: #c4a499;
+
+  --font-body: "Be Vietnam Pro", sans-serif;
+  --font-headline: "Outfit", sans-serif;
+  --font-label: "Be Vietnam Pro", sans-serif;
+}
+
+.theme-p3 {
+  --color-background: #ffffff;
+  --color-primary: #ba0013;
+  --color-primary-container: #e31e24;
+  --color-on-primary: #ffffff;
+  --color-on-primary-container: #fffafa;
+  --color-surface: #ffffff;
+  --color-on-surface: #000000; /* Pure Black for P3 High Contrast */
+  --color-surface-container-low: #fff0ee;
+  --color-surface-container: #ffe9e6;
+  --color-surface-container-high: #ffe2de;
+  --color-surface-container-highest: #fddbd7;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-bright: #ffffff;
+  --color-on-surface-variant: #1a0f0e; /* Near Black */
+  --color-secondary: #212121;
+  --color-secondary-container: #e2e2e5;
+  --color-error: #ba1a1a;
+  --color-outline: #926f6b;
+  --color-outline-variant: #d1b1ad;
+
+  --font-body: "Montserrat", sans-serif;
+  --font-headline: "Montserrat", sans-serif;
+  --font-label: "Montserrat", sans-serif;
+}
+
+@theme {
+  --color-background: var(--color-background);
+  --color-primary: var(--color-primary);
+  --color-primary-container: var(--color-primary-container);
+  --color-on-primary: var(--color-on-primary);
+  --color-on-primary-container: var(--color-on-primary-container);
+  --color-surface: var(--color-surface);
+  --color-on-surface: var(--color-on-surface);
+  --color-surface-container-low: var(--color-surface-container-low);
+  --color-surface-container: var(--color-surface-container);
+  --color-surface-container-highest: var(--color-surface-container-highest);
+  --color-surface-container-lowest: var(--color-surface-container-lowest);
+  --color-surface-bright: var(--color-surface-bright);
+  --color-on-surface-variant: var(--color-on-surface-variant);
+  --color-secondary: var(--color-secondary);
+  --color-secondary-container: var(--color-secondary-container);
+  --color-error: var(--color-error);
+  --color-outline: var(--color-outline);
+  --color-outline-variant: var(--color-outline-variant);
+
+  --font-body: var(--font-body);
+  --font-headline: var(--font-headline);
+  --font-label: var(--font-label);
 
   --radius-xl: 1rem;
   --radius-2xl: 1.5rem;
@@ -39,15 +125,19 @@
   }
 }
 
-@layer base {
-  body {
-    @apply bg-background text-on-surface antialiased overflow-x-hidden;
-  }
+body {
+  background-color: var(--color-background);
+  color: var(--color-on-surface);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 @layer utilities {
   .dotted-leader {
-    background-image: radial-gradient(circle, #cd7f32 1px, transparent 1.5px);
+    background-image: radial-gradient(circle, var(--color-primary-container) 1px, transparent 1.5px);
     background-size: 10px 4px;
     background-position: bottom;
     background-repeat: repeat-x;
@@ -66,5 +156,11 @@
   }
   ::-webkit-scrollbar-thumb:hover {
     background-color: var(--color-primary-container);
+  }
+
+  .bg-pattern {
+    background-image: radial-gradient(var(--color-outline-variant) 1px, transparent 1px);
+    background-size: 24px 24px;
+    opacity: 0.15;
   }
 }
