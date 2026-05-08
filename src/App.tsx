@@ -10,7 +10,17 @@ import { AdminDashboard } from './pages/AdminDashboard';
 import type { CartItem, Order, OrderStatus } from './types';
 
 // Simple wrapper to provide Layout with Navbar, Footer and Cart
-function Layout({ children, cart, cartCount, isCartOpen, setIsCartOpen, removeFromCart, onPlaceOrder }: any) {
+interface LayoutProps {
+  children: React.ReactNode;
+  cart: CartItem[];
+  cartCount: number;
+  isCartOpen: boolean;
+  setIsCartOpen: (open: boolean) => void;
+  removeFromCart: (id: string) => void;
+  onPlaceOrder: (name: string) => void;
+}
+
+function Layout({ children, cart, cartCount, isCartOpen, setIsCartOpen, removeFromCart, onPlaceOrder }: LayoutProps) {
   return (
     <div className="min-h-screen flex flex-col pt-[88px]">
       <Navbar cartItemCount={cartCount} onCartClick={() => setIsCartOpen(true)} />
@@ -61,7 +71,10 @@ function App() {
 
     if (existingIndex >= 0) {
       const newCart = [...cart];
-      newCart[existingIndex].quantity += item.quantity;
+      newCart[existingIndex] = {
+        ...newCart[existingIndex],
+        quantity: newCart[existingIndex].quantity + item.quantity
+      };
       setCart(newCart);
     } else {
       setCart([...cart, { ...item, cartItemId: Date.now().toString() }]);
