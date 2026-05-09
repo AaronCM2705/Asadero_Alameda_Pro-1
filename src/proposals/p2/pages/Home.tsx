@@ -19,56 +19,56 @@ export const Home: React.FC = () => {
                 <span className="font-headline text-xs font-black text-primary uppercase tracking-[0.4em]">Sabor Artesanal</span>
               </div>
               
-              <h1 className="font-headline text-6xl md:text-[90px] font-black text-on-surface leading-[0.85] tracking-tighter mb-10">
+              <h1 className="font-headline text-5xl md:text-[90px] font-black text-on-surface leading-[0.9] tracking-tighter mb-8">
                 EL REY DEL <br/>
                 <span className="text-primary italic">ASADO.</span>
               </h1>
               
-              <p className="font-body text-xl text-on-surface-variant max-w-md mb-12 leading-relaxed">
+              <p className="font-body text-lg md:text-xl text-on-surface font-medium max-w-md mb-12 leading-relaxed">
                 Pollos seleccionados, marinados por 24 horas y asados lentamente con leña de encina para un sabor inigualable.
               </p>
               
               <div className="flex flex-wrap gap-4">
                 <Link 
                   to="/p2/menu" 
-                  className="h-16 px-10 bg-primary text-white rounded-2xl font-headline text-sm font-black uppercase tracking-widest flex items-center gap-3 hover:bg-on-surface transition-all shadow-2xl hover:-translate-y-1"
+                  className="w-full sm:w-auto h-16 px-10 bg-primary text-white rounded-2xl font-headline text-sm font-black uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-on-surface transition-all shadow-2xl hover:-translate-y-1"
                 >
                   Pedir Ahora <ArrowRight size={20} />
                 </Link>
                 <Link 
                   to="/p2/about" 
-                  className="h-16 px-10 border-2 border-outline-variant text-on-surface rounded-2xl font-headline text-sm font-black uppercase tracking-widest flex items-center justify-center hover:bg-surface-container transition-all"
+                  className="w-full sm:w-auto h-16 px-10 border-2 border-on-surface text-on-surface rounded-2xl font-headline text-sm font-black uppercase tracking-widest flex items-center justify-center hover:bg-surface-container transition-all"
                 >
-                  Nuestra Historia
+                  Historia
                 </Link>
               </div>
 
-              <div className="mt-16 flex items-center gap-10 opacity-60 grayscale hover:grayscale-0 transition-all">
+              <div className="mt-16 flex items-center gap-6 md:gap-10 opacity-80 transition-all">
                 <div className="flex items-center gap-2">
                   <Clock size={16} className="text-primary" />
-                  <span className="text-[10px] font-black uppercase tracking-widest">Entrega Rápida</span>
+                  <span className="text-[10px] font-black uppercase tracking-widest text-on-surface">Entrega Rápida</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Star size={16} className="text-primary" />
-                  <span className="text-[10px] font-black uppercase tracking-widest">Calidad Premium</span>
+                  <span className="text-[10px] font-black uppercase tracking-widest text-on-surface">Calidad Premium</span>
                 </div>
               </div>
             </div>
 
             {/* Image Column */}
-            <div className="lg:col-span-5 relative h-full min-h-[500px]">
+            <div className="lg:col-span-5 relative h-64 md:h-full min-h-[400px] md:min-h-[500px]">
               <img 
-                src="/assets/images/brasas_fuego_artesanal.png" 
+                src="/assets/images/hero-p2-gourmet.png" 
                 alt="Pollo Asado Gourmet" 
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-white via-transparent to-transparent lg:block hidden"></div>
               
               {/* Floating Badge */}
-              <div className="absolute top-10 right-10 bg-white p-6 rounded-3xl shadow-2xl border border-outline-variant/50 animate-bounce-slow">
+              <div className="absolute top-6 right-6 md:top-10 md:right-10 bg-white p-4 md:p-6 rounded-3xl shadow-2xl border border-outline-variant/50 animate-bounce-slow">
                 <div className="text-center">
-                  <p className="font-headline text-3xl font-black text-primary">100%</p>
-                  <p className="font-headline text-[8px] font-black uppercase tracking-widest text-on-surface-variant">Natural</p>
+                  <p className="font-headline text-2xl md:text-3xl font-black text-primary">100%</p>
+                  <p className="font-headline text-[8px] font-black uppercase tracking-widest text-on-surface">Natural</p>
                 </div>
               </div>
             </div>

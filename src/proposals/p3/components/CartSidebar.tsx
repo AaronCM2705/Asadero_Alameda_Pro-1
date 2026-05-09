@@ -1,17 +1,27 @@
 import React from 'react';
 import { X, Trash2, ShoppingCart, ArrowRight } from 'lucide-react';
 import type { CartItem } from '../../../shared/types';
+import { useOrders } from '../../../context/OrderContext';
 
 interface CartSidebarProps {
   isOpen: boolean;
   onClose: () => void;
   cart: CartItem[];
   onRemoveItem: (cartItemId: string) => void;
-  onPlaceOrder: (name: string) => void;
+  onPlaceOrder: () => void;
 }
 
 export const CartSidebar: React.FC<CartSidebarProps> = ({ isOpen, onClose, cart, onRemoveItem, onPlaceOrder }) => {
+  const { addOrder } = useOrders();
+  const [customerName, setCustomerName] = React.useState('');
   const total = cart.reduce((sum, item) => sum + (item.price + (item.selectedOption?.priceModifier || 0)) * item.quantity, 0);
+
+  const handlePlaceOrder = () => {
+    addOrder(customerName, cart);
+    onPlaceOrder();
+    setCustomerName('');
+    alert('Comanda procesada. El sistema está en marcha.');
+  };
 
   return (
     <>
@@ -74,8 +84,18 @@ export const CartSidebar: React.FC<CartSidebarProps> = ({ isOpen, onClose, cart,
 
         {cart.length > 0 && (
           <div className="p-8 bg-surface-container-low border-t border-outline-variant space-y-6">
-            <div className="space-y-2">
-              <div className="flex justify-between items-center text-on-surface-variant">
+            <div className="space-y-4">
+              <div>
+                <label className="text-[10px] font-black text-on-surface uppercase tracking-[0.3em] mb-2 block">Referencia Cliente</label>
+                <input 
+                  type="text" 
+                  value={customerName}
+                  onChange={(e) => setCustomerName(e.target.value)}
+                  placeholder="ID / Nombre"
+                  className="w-full h-12 bg-white border border-outline-variant rounded-sm px-4 text-on-surface outline-none focus:border-primary transition-all font-headline text-xs uppercase tracking-widest"
+                />
+              </div>
+              <div className="flex justify-between items-center text-on-surface-variant pt-4">
                 <span className="font-headline text-[10px] font-black uppercase tracking-widest">Base de Pedido</span>
                 <span className="font-headline font-bold text-sm">€{total.toFixed(2)}</span>
               </div>
@@ -85,8 +105,9 @@ export const CartSidebar: React.FC<CartSidebarProps> = ({ isOpen, onClose, cart,
               </div>
             </div>
             <button 
-              onClick={() => onPlaceOrder('Cliente P3')}
-              className="w-full h-16 bg-on-surface text-white rounded-md font-headline text-xs font-black uppercase tracking-[0.3em] hover:bg-primary active:scale-95 transition-all shadow-xl group flex items-center justify-center gap-3"
+              disabled={!customerName.trim()}
+              onClick={handlePlaceOrder}
+              className="w-full h-16 bg-on-surface text-white rounded-md font-headline text-xs font-black uppercase tracking-[0.3em] hover:bg-primary active:scale-95 transition-all shadow-xl group flex items-center justify-center gap-3 disabled:opacity-30 disabled:grayscale"
             >
               Procesar Comanda <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
             </button>

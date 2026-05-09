@@ -46,7 +46,7 @@
   --color-surface-container-highest: #e4e2e2;
   --color-surface-container-lowest: #ffffff;
   --color-surface-bright: #fbf9f8;
-  --color-on-surface-variant: #2d1b15; /* Dark Brown */
+  --color-on-surface-variant: #1a1a1a; /* Maximum contrast black-gray */
   --color-secondary: #3d3d3d;
   --color-secondary-container: #e2dfde;
   --color-error: #ba1a1a;

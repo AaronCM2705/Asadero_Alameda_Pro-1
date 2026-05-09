@@ -1,21 +1,30 @@
 import React from 'react';
 import { X, ArrowLeft } from 'lucide-react';
 import type { CartItem } from '../../../shared/types';
+import { useOrders } from '../../../context/OrderContext';
 
 interface CartSidebarProps {
   isOpen: boolean;
   onClose: () => void;
   cart: CartItem[];
   onRemoveItem: (cartItemId: string) => void;
-  onPlaceOrder: (customerName: string) => void;
+  onPlaceOrder: () => void;
 }
 
 export const CartSidebar: React.FC<CartSidebarProps> = ({ isOpen, onClose, cart, onRemoveItem, onPlaceOrder }) => {
+  const { addOrder } = useOrders();
   const [customerName, setCustomerName] = React.useState('');
   const total = cart.reduce((sum, item) => {
     const itemPrice = item.price + (item.selectedOption?.priceModifier || 0);
     return sum + (itemPrice * item.quantity);
   }, 0);
+
+  const handlePlaceOrder = () => {
+    addOrder(customerName, cart);
+    onPlaceOrder(); // Clears cart in App.tsx
+    setCustomerName('');
+    alert('¡Pedido enviado a la cocina!');
+  };
 
   return (
     <>
@@ -83,10 +92,7 @@ export const CartSidebar: React.FC<CartSidebarProps> = ({ isOpen, onClose, cart,
           </div>
           <button 
             disabled={cart.length === 0 || !customerName.trim()}
-            onClick={() => {
-              onPlaceOrder(customerName);
-              setCustomerName('');
-            }}
+            onClick={handlePlaceOrder}
             className="w-full h-14 rounded-full bg-primary-container text-background font-body text-lg uppercase tracking-widest hover:bg-primary transition-all flex items-center justify-center font-bold shadow-lg hover:shadow-[0_0_15px_rgba(205,127,50,0.4)] hover:scale-[1.02] disabled:opacity-50 disabled:pointer-events-none"
           >
             Confirmar Pedido

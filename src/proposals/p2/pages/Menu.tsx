@@ -109,7 +109,7 @@ const MenuItemCard: React.FC<{ item: MenuItem; onAddToCart: (item: Omit<CartItem
       <div className="p-8 flex flex-col flex-grow">
         <div className="mb-6">
           <h3 className="font-headline text-2xl font-black text-on-surface uppercase tracking-tight mb-2 group-hover:text-primary transition-colors">{item.name}</h3>
-          <p className="font-body text-on-surface-variant text-base leading-relaxed line-clamp-2 font-medium">{item.description}</p>
+          <p className="font-body text-on-surface text-sm md:text-base leading-relaxed line-clamp-2 font-bold opacity-80">{item.description}</p>
         </div>
 
         {/* Options Selection */}
@@ -121,7 +121,7 @@ const MenuItemCard: React.FC<{ item: MenuItem; onAddToCart: (item: Omit<CartItem
                 <button
                   key={opt.id}
                   onClick={() => setSelectedOption(opt)}
-                  className={`py-2 px-1 rounded-xl text-[10px] font-bold border-2 transition-all ${selectedOption?.id === opt.id ? 'bg-primary text-white border-primary shadow-lg' : 'border-outline-variant text-on-surface-variant hover:bg-surface-container'}`}
+                  className={`py-3 px-1 rounded-xl text-[10px] font-black border-2 transition-all ${selectedOption?.id === opt.id ? 'bg-primary text-white border-primary shadow-lg' : 'border-on-surface/20 text-on-surface hover:border-primary'}`}
                 >
                   {opt.name}
                 </button>

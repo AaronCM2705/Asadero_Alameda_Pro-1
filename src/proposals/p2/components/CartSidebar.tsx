@@ -1,17 +1,27 @@
 import React from 'react';
 import { X, Trash2, ShoppingBag } from 'lucide-react';
 import type { CartItem } from '../../../shared/types';
+import { useOrders } from '../../../context/OrderContext';
 
 interface CartSidebarProps {
   isOpen: boolean;
   onClose: () => void;
   cart: CartItem[];
   onRemoveItem: (cartItemId: string) => void;
-  onPlaceOrder: (name: string) => void;
+  onPlaceOrder: () => void;
 }
 
 export const CartSidebar: React.FC<CartSidebarProps> = ({ isOpen, onClose, cart, onRemoveItem, onPlaceOrder }) => {
+  const { addOrder } = useOrders();
+  const [customerName, setCustomerName] = React.useState('');
   const total = cart.reduce((sum, item) => sum + (item.price + (item.selectedOption?.priceModifier || 0)) * item.quantity, 0);
+
+  const handlePlaceOrder = () => {
+    addOrder(customerName, cart);
+    onPlaceOrder();
+    setCustomerName('');
+    alert('¡Excelente elección! Tu pedido se está preparando.');
+  };
 
   return (
     <>
@@ -71,13 +81,24 @@ export const CartSidebar: React.FC<CartSidebarProps> = ({ isOpen, onClose, cart,
 
         {cart.length > 0 && (
           <div className="p-6 bg-surface-container-lowest border-t border-outline-variant space-y-4">
+            <div className="mb-4">
+              <label className="text-[10px] font-black text-primary uppercase tracking-widest mb-2 block">Nombre para el pedido</label>
+              <input 
+                type="text" 
+                value={customerName}
+                onChange={(e) => setCustomerName(e.target.value)}
+                placeholder="Ej: Laura G."
+                className="w-full h-12 bg-white border border-outline-variant rounded-xl px-4 text-on-surface outline-none focus:border-primary transition-all font-body"
+              />
+            </div>
             <div className="flex justify-between items-center">
-              <span className="font-headline font-bold text-on-surface-variant uppercase tracking-widest text-sm">Subtotal</span>
+              <span className="font-headline font-bold text-on-surface-variant uppercase tracking-widest text-sm">Total</span>
               <span className="font-headline text-2xl font-black text-on-surface">€{total.toFixed(2)}</span>
             </div>
             <button 
-              onClick={() => onPlaceOrder('Cliente P2')}
-              className="w-full h-16 bg-primary text-white rounded-xl font-headline font-bold uppercase tracking-[0.2em] hover:brightness-110 active:scale-95 transition-all shadow-lg shadow-primary/20"
+              disabled={!customerName.trim()}
+              onClick={handlePlaceOrder}
+              className="w-full h-16 bg-primary text-white rounded-xl font-headline font-bold uppercase tracking-[0.2em] hover:brightness-110 active:scale-95 transition-all shadow-lg shadow-primary/20 disabled:opacity-50 disabled:grayscale"
             >
               Confirmar Pedido
             </button>

@@ -127,7 +127,7 @@ const MenuItemCard: React.FC<{ item: MenuItem; onAddToCart: (item: Omit<CartItem
       </div>
       
       <h3 className="text-2xl font-black text-on-surface uppercase tracking-tight mb-3">{item.name}</h3>
-      <p className="font-body text-sm text-on-surface-variant mb-10 leading-relaxed font-semibold">{item.description}</p>
+      <p className="font-body text-sm text-on-surface mb-10 leading-relaxed font-bold opacity-90">{item.description}</p>
       
       {/* Options */}
       {item.options && (
@@ -138,7 +138,7 @@ const MenuItemCard: React.FC<{ item: MenuItem; onAddToCart: (item: Omit<CartItem
               <button
                 key={opt.id}
                 onClick={() => setSelectedOption(opt)}
-                className={`px-5 py-3 text-[11px] font-black border-2 rounded-sm transition-all ${selectedOption?.id === opt.id ? 'bg-on-surface text-white border-on-surface shadow-md' : 'border-on-surface/10 text-on-surface-variant hover:bg-on-surface/5'}`}
+                className={`px-5 py-4 text-[11px] font-black border-2 rounded-sm transition-all ${selectedOption?.id === opt.id ? 'bg-on-surface text-white border-on-surface shadow-md' : 'border-on-surface/20 text-on-surface hover:bg-on-surface/5'}`}
               >
                 {opt.name}
               </button>

@@ -61,9 +61,13 @@ export const Navbar: React.FC<NavbarProps> = ({ cartItemCount, onCartClick }) =>
         <button onClick={closeMenu} className="absolute top-6 right-6 text-on-surface hover:text-primary">
           <X size={24} />
         </button>
-        <Link to="/p1" onClick={closeMenu} className="text-primary font-bold border-b border-primary/20 pb-4 font-body text-lg uppercase tracking-widest mt-4">Inicio</Link>
-        <Link to="/p1/menu" onClick={closeMenu} className="text-on-surface-variant hover:text-primary transition-colors border-b border-primary/10 pb-4 font-body text-lg uppercase tracking-widest">Menú</Link>
-        <Link to="/p1/about" onClick={closeMenu} className="text-on-surface-variant hover:text-primary transition-colors border-b border-primary/10 pb-4 font-body text-lg uppercase tracking-widest">Nosotros</Link>
+        <Link to="/p1" onClick={closeMenu} className={`font-body text-lg uppercase tracking-widest mt-4 ${location.pathname === '/p1' ? 'text-primary font-black border-b border-primary' : 'text-on-surface/60'}`}>Inicio</Link>
+        <Link to="/p1/menu" onClick={closeMenu} className={`font-body text-lg uppercase tracking-widest ${location.pathname === '/p1/menu' ? 'text-primary font-black border-b border-primary' : 'text-on-surface/60'}`}>Menú</Link>
+        <Link to="/p1/about" onClick={closeMenu} className={`font-body text-lg uppercase tracking-widest ${location.pathname === '/p1/about' ? 'text-primary font-black border-b border-primary' : 'text-on-surface/60'}`}>Nosotros</Link>
+        <Link to="/p1/admin" onClick={closeMenu} className="flex items-center gap-2 bg-primary text-black px-5 py-3 rounded-xl font-black text-xs uppercase tracking-widest shadow-lg mt-4">
+          <LayoutDashboard size={18} />
+          <span>Panel Admin</span>
+        </Link>
       </div>
     </>
   );
